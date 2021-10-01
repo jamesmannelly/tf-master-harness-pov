@@ -1,0 +1,38 @@
+{
+    "resource": {
+      "aws_instance": {
+        "docker_host": {
+            "instance_type": "t2.micro",
+            "ami": "ami-0a0cb6c7bcb2e4c51",
+            "key_name": "bc-harness"
+          }
+        }
+    },
+    "variable": {
+        "access_key": {
+          "type": "string",
+          "default": ""
+        },
+        "secret_key": {
+            "type": "string",
+            "default": ""
+          }
+    },
+    "provider": {
+        "aws": {
+            "region": "eu-west-2",
+            "access_key": "${var.access_key}",
+            "secret_key": "${var.secret_key}",
+            "version": "2.46.0"
+        }
+    },
+    "terraform": {
+        "backend": {
+          "s3": {
+            "region": "eu-west-2",
+            "bucket": "bic-harness",
+            "key": "terraform-json.tfstate"
+          }
+        }
+    }
+}

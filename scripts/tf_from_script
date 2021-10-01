@@ -1,0 +1,13 @@
+if [[ -d terraform ]]
+then
+    cd terraform/docker_host/
+    git pull
+else 
+    ssh-keyscan github.com >> ~/.ssh/known_hosts
+    ssh -T git@github.com
+    git clone git@github.com:bic-harness/terraform.git
+    cd terraform/docker_host/
+fi
+git checkout ${workflow.variables.gitbranch}
+terraform init
+terraform plan

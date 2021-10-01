@@ -1,0 +1,19 @@
+sudo yum install epel-release -y
+sudo yum-config-manager --enable epel
+sudo yum install git ansible unzip -y
+curl -O -L https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
+chmod 777 terraform_0.12.24_linux_amd64.zip
+unzip terraform_0.12.24_linux_amd64.zip
+sudo mv terraform /bin/ -f
+terraform --version
+ansible --version
+
+rm -f ~/terraform_gcp.json
+
+echo ${secrets.getValue("bcgcpjson")} > ~/bcgcpjson.txt
+echo ${secrets.getValue("bcgcpkey")} > ~/bcgcpkey.txt
+echo ${secrets.getValue("bcgcpjson")} | base64 -d > ~/terraform_gcp.json
+rm -f ~/terraform_gcp.json
+cat ~/bcgcpjson.txt | base64 -d > ~/terraform_gcp.json
+
+chmod 400 ~/terraform_gcp.json
