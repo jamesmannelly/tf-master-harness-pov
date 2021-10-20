@@ -1,0 +1,16 @@
+variable "vpc_cidr" {}
+variable "availability_zone_1" {}
+variable "availability_zone_2" {}
+variable "availability_zone_3" {}
+variable "private_subnet_cidr_1" {}
+variable "private_subnet_cidr_2" {}
+variable "private_subnet_cidr_3" {}
+variable "private_subnet_cidr_4" {}
+variable "transit_gateway_id" {}
+variable "public_subnet_cidr_1" {}
+variable "public_subnet_cidr_2" {}
+variable "public_subnet_cidr_3" {}
+variable "vpc_name" {}
+variable "transit_gateway_attachment_name" {}
+variable "EKS_cluster_name" {}
+variable "route53_addr_arpa" {}
